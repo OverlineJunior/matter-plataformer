@@ -1,7 +1,8 @@
 [package]
-name = "over/PROJECT_NAME"
+name = "over/matter-plataformer"
 version = "0.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
 [dependencies]
+matter = "evaera/matter@^0.4"
