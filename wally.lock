@@ -10,9 +10,14 @@ dependencies = [["TestEZ", "roblox/testez@0.4.1"]]
 [[package]]
 name = "over/matter-plataformer"
 version = "0.1.0"
-dependencies = [["matter", "evaera/matter@0.4.0"]]
+dependencies = [["Matter", "evaera/matter@0.4.0"], ["Rewire", "sayhisam1/rewire@0.2.0"]]
 
 [[package]]
 name = "roblox/testez"
 version = "0.4.1"
+dependencies = []
+
+[[package]]
+name = "sayhisam1/rewire"
+version = "0.2.0"
 dependencies = []
