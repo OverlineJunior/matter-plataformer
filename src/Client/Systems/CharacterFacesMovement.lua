@@ -7,7 +7,7 @@ local Components = require(ReplicatedStorage.Client.Components)
 local Player = Components.Player
 
 
-local function CharacterFacesMovement(world)
+local function CharacterFacesMovement(world, _, widgets)
     for _, plr in world:query(Player) do
         local char = plr.Instance.Character
         local hum: Humanoid? = if char then char:FindFirstChild('Humanoid') else nil
@@ -15,7 +15,7 @@ local function CharacterFacesMovement(world)
 
         if not root or not hum then continue end
 
-        char.Humanoid.AutoRotate = false
+        char.Humanoid.AutoRotate = widgets.checkbox('Enable AutoRotate'):checked()
 
         for _, input: InputObject, gameProcessed: boolean in Matter.useEvent(UserInputService, 'InputBegan') do
             if gameProcessed then continue end
