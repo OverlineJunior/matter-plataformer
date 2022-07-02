@@ -1,7 +1,8 @@
 local Players = game:GetService('Players')
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 
-local InitMatter = require(ReplicatedStorage.Shared.InitMatter)
+local StartKnit = require(ReplicatedStorage.Client.StartKnitClient)
+local StartMatter = require(ReplicatedStorage.Shared.StartMatter)
 local Components = require(ReplicatedStorage.Client.Components)
 
 local Character = Components.Character
@@ -9,7 +10,8 @@ local Camera = Components.Camera
 
 local client = Players.LocalPlayer
 
-local world = InitMatter(ReplicatedStorage.Client.Systems)
+StartKnit()
+local world = StartMatter(ReplicatedStorage.Client.Systems)
 
 client.CharacterAdded:Connect(function(char)
     char:WaitForChild('Humanoid')
