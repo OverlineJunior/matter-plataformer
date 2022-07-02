@@ -1,7 +1,7 @@
 local Players = game:GetService('Players')
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 
-local StartKnit = require(ReplicatedStorage.Client.StartKnitClient)
+local StartKnit = require(ReplicatedStorage.Shared.StartKnit)
 local StartMatter = require(ReplicatedStorage.Shared.StartMatter)
 local Components = require(ReplicatedStorage.Client.Components)
 
@@ -10,7 +10,7 @@ local Camera = Components.Camera
 
 local client = Players.LocalPlayer
 
-StartKnit()
+StartKnit(ReplicatedStorage.Client)
 
 local world = StartMatter(ReplicatedStorage.Client.Systems)
 

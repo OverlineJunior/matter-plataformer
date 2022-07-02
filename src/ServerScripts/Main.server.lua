@@ -1,8 +1,8 @@
-local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local ServerStorage = game:GetService('ServerStorage')
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
 
-local StartKnit = require(ServerStorage.Server.StartKnitServer)
+local StartKnit = require(ReplicatedStorage.Shared.StartKnit)
 local StartMatter = require(ReplicatedStorage.Shared.StartMatter)
 
-StartKnit()
+StartKnit(ServerStorage.Server)
 StartMatter(ServerStorage.Server.Systems)
