@@ -1,16 +1,31 @@
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local RunService = game:GetService('RunService')
+local UserInputService = game:GetService('UserInputService')
 local CollectionService = game:GetService('CollectionService')
 
 local Matter = require(ReplicatedStorage.Packages.Matter)
 local Rewire = require(ReplicatedStorage.Packages.Rewire)
+local Plasma = require(ReplicatedStorage.Packages.Plasma)
 
 
 local function StartMatter(container: Instance): (any, {})
 	local world = Matter.World.new()
+
+	local debugger = Matter.Debugger.new(Plasma)
+	local widgets = debugger:getWidgets()
 	local state = {}
-	local loop = Matter.Loop.new(world, state)
+	local loop = Matter.Loop.new(world, state, widgets)
 	local reloader = Rewire.HotReloader.new()
+
+	debugger:autoInitialize(loop)
+
+	if RunService:IsClient() then
+		UserInputService.InputBegan:Connect(function(input)
+			if input.KeyCode == Enum.KeyCode.F4 then
+				debugger:toggle()
+			end
+		end)
+	end
 
 	local firstRunSystems = {}
 	local systemsByModule = {}
