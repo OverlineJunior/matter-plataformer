@@ -4,12 +4,12 @@ registry = "test"
 
 [[package]]
 name = "evaera/matter"
-version = "0.5.1"
+version = "0.5.2"
 dependencies = [["TestEZ", "roblox/testez@0.4.1"]]
 
 [[package]]
 name = "evaera/plasma"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [["TestEZ", "roblox/testez@0.4.1"]]
 
 [[package]]
@@ -20,7 +20,7 @@ dependencies = []
 [[package]]
 name = "over/matter-plataformer"
 version = "0.1.0"
-dependencies = [["Knit", "sleitnick/knit@1.4.7"], ["Matter", "evaera/matter@0.5.1"], ["Plasma", "evaera/plasma@0.2.0"], ["Rewire", "sayhisam1/rewire@0.3.0"]]
+dependencies = [["Knit", "sleitnick/knit@1.4.7"], ["Matter", "evaera/matter@0.5.2"], ["Plasma", "evaera/plasma@0.3.0"], ["Rewire", "sayhisam1/rewire@0.3.0"]]
 
 [[package]]
 name = "roblox/testez"

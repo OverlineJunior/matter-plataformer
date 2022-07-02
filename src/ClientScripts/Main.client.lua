@@ -5,23 +5,20 @@ local StartKnit = require(ReplicatedStorage.Client.StartKnitClient)
 local StartMatter = require(ReplicatedStorage.Shared.StartMatter)
 local Components = require(ReplicatedStorage.Client.Components)
 
-local Character = Components.Character
+local Player = Components.Player
 local Camera = Components.Camera
 
 local client = Players.LocalPlayer
 
 StartKnit()
+
 local world = StartMatter(ReplicatedStorage.Client.Systems)
 
-client.CharacterAdded:Connect(function(char)
-    char:WaitForChild('Humanoid')
-
-    world:spawn(
-        Character {
-            Instance = char,
-        },
-        Camera {
-            Instance = workspace.CurrentCamera,
-        }
-    )
-end)
+world:spawn(
+    Player {
+        Instance = client,
+    },
+    Camera {
+        Instance = workspace.CurrentCamera,
+    }
+)
