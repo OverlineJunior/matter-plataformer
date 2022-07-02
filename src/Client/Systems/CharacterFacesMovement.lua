@@ -17,14 +17,10 @@ local function CharacterFacesMovement(world, _, widgets)
 
         char.Humanoid.AutoRotate = widgets.checkbox('Enable AutoRotate'):checked()
 
-        for _, input: InputObject, gameProcessed: boolean in Matter.useEvent(UserInputService, 'InputBegan') do
-            if gameProcessed then continue end
-
-            if input.KeyCode == Enum.KeyCode.A then
-                root.CFrame = CFrame.lookAt(root.Position + Vector3.xAxis, root.Position)
-            elseif input.KeyCode == Enum.KeyCode.D then
-                root.CFrame = CFrame.lookAt(root.Position + -Vector3.xAxis, root.Position)
-            end
+        if UserInputService:IsKeyDown(Enum.KeyCode.A) and root.Orientation.Y ~= 90 then
+            root.CFrame = CFrame.new(root.Position) * CFrame.Angles(0, math.rad(90), 0)
+        elseif UserInputService:IsKeyDown(Enum.KeyCode.D) and root.Orientation.Y ~= -90 then
+            root.CFrame = CFrame.new(root.Position) * CFrame.Angles(0, math.rad(-90), 0)
         end
     end
 end
