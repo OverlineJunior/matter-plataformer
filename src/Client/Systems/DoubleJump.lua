@@ -12,7 +12,7 @@ local canJump = true
 local function DoubleJump(world)
     for _, plr in world:query(Player) do
         local char = plr.Instance.Character
-        local hum: Humanoid? = if char then char.Humanoid else nil
+        local hum: Humanoid? = if char then char:FindFirstChild('Humanoid') else nil
 
         if not hum then continue end
 
