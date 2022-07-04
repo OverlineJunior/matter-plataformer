@@ -3,6 +3,18 @@ local ReplicatedStorage = game:GetService('ReplicatedStorage')
 
 local StartKnit = require(ReplicatedStorage.Shared.StartKnit)
 local StartMatter = require(ReplicatedStorage.Shared.StartMatter)
+local Components = require(ServerStorage.Server.Components)
+
+local BasePart = Components.BasePart
+local Damaging = Components.Damaging
 
 StartKnit(ServerStorage.Server)
-StartMatter(ServerStorage.Server.Systems)
+
+local world = StartMatter(ServerStorage.Server.Systems)
+
+world:spawn(
+    BasePart {
+        Instance = workspace.DamagingPart1,
+    },
+    Damaging {}
+)

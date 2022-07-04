@@ -7,6 +7,8 @@ local Components = require(ReplicatedStorage.Client.Components)
 
 local Player = Components.Player
 local Camera = Components.Camera
+local Model = Components.Model
+local JumpPad = Components.JumpPad
 
 local client = Players.LocalPlayer
 
@@ -20,5 +22,12 @@ world:spawn(
     },
     Camera {
         Instance = workspace.CurrentCamera,
+    }
+)
+
+world:spawn(
+    JumpPad {},
+    Model {
+        Instance = workspace.JumpPad1,
     }
 )
