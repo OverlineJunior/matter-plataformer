@@ -3,10 +3,10 @@ local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local Matter = require(ReplicatedStorage.Packages.Matter)
 
 local Components = {
-    Player = Matter.component(),
-    Camera = Matter.component(),
-    JumpPad = Matter.component(),
-    Model = Matter.component(),
+    Player = Matter.component('Player'),
+    Camera = Matter.component('Camera'),
+    JumpPad = Matter.component('JumpPad'),
+    Model = Matter.component('Model'),
 }
 
 return Components

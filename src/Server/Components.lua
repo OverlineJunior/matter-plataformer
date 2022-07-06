@@ -4,8 +4,8 @@ local Matter = require(ReplicatedStorage.Packages.Matter)
 
 
 local Components = {
-    BasePart = Matter.component(),
-    Damaging = Matter.component(),
+    BasePart = Matter.component('BasePart'),
+    Damaging = Matter.component('Damaging'),
 }
 
 
