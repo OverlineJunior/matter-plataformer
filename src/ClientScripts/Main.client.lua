@@ -25,9 +25,11 @@ world:spawn(
     }
 )
 
-world:spawn(
+local id = world:spawn(
     JumpPad {},
     Model {
         Instance = workspace.JumpPad1,
     }
 )
+
+workspace.JumpPad1:SetAttribute('clientEntityId', id)

@@ -6,26 +6,47 @@ local CollectionService = game:GetService('CollectionService')
 local Matter = require(ReplicatedStorage.Packages.Matter)
 local Rewire = require(ReplicatedStorage.Packages.Rewire)
 local Plasma = require(ReplicatedStorage.Packages.Plasma)
+local ClientComponents = require(ReplicatedStorage.Client.Components)
 
 
-local function StartMatter(container: Instance): (any, {})
-	local world = Matter.World.new()
-
+local function BuildDebugger(world): any
 	local debugger = Matter.Debugger.new(Plasma)
-	local widgets = debugger:getWidgets()
-	local state = {}
-	local loop = Matter.Loop.new(world, state, widgets)
-	local reloader = Rewire.HotReloader.new()
 
-	debugger:autoInitialize(loop)
+	debugger.authorize = function(player: Player)
+		if player.UserId == 93428451 then
+			return true
+		end
+	end
 
 	if RunService:IsClient() then
+		debugger.findInstanceFromEntity = function(id)
+			if not world:contains(id) then return end
+
+			local model = world:get(id, ClientComponents.Model)
+
+			return if model then model.Instance else nil
+		end
+
 		UserInputService.InputBegan:Connect(function(input)
 			if input.KeyCode == Enum.KeyCode.F4 then
 				debugger:toggle()
 			end
 		end)
 	end
+
+	return debugger
+end
+
+
+local function StartMatter(container: Instance): (any, {})
+	local world = Matter.World.new()
+	local debugger = BuildDebugger(world)
+	local widgets = debugger:getWidgets()
+	local state = {}
+	local loop = Matter.Loop.new(world, state, widgets)
+	local reloader = Rewire.HotReloader.new()
+
+	debugger:autoInitialize(loop)
 
 	local firstRunSystems = {}
 	local systemsByModule = {}

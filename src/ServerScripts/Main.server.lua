@@ -1,4 +1,5 @@
 local ServerStorage = game:GetService('ServerStorage')
+local CollectionService = game:GetService('CollectionService')
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 
 local StartKnit = require(ReplicatedStorage.Shared.StartKnit)
@@ -18,3 +19,5 @@ world:spawn(
     },
     Damaging {}
 )
+
+CollectionService:AddTag(workspace.DamagingPart1, 'serverEntityId')
