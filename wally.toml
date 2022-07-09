@@ -5,7 +5,7 @@ registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
 [dependencies]
-Matter = "evaera/matter@0.5.3"
+Matter = "evaera/matter@0.6.0"
 Rewire = "sayhisam1/rewire@0.3.0"
 Knit = "sleitnick/knit@1.4.7"
-Plasma = "evaera/plasma@0.4.0"
+Plasma = "evaera/plasma@0.4.1"
