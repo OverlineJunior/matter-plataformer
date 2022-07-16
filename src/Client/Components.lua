@@ -7,6 +7,7 @@ local Components = {
     Camera = Matter.component('Camera'),
     JumpPad = Matter.component('JumpPad'),
     Model = Matter.component('Model'),
+    MovementConstraint = Matter.component('MovementConstraint'),
 }
 
 return Components

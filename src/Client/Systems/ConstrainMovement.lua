@@ -1,8 +1,10 @@
 local ContextActionService = game:GetService('ContextActionService')
-local UserInputService = game:GetService('UserInputService')
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
 
-local Knit = require(ReplicatedStorage.Packages.Knit)
+local Components = require(ReplicatedStorage.Client.Components)
+
+local Player = Components.Player
+local MovementConstraint = Components.MovementConstraint
 
 
 local function DisableFowardBackward()
@@ -21,16 +23,13 @@ local function DisableFowardBackward()
 end
 
 
-local MovementController = Knit.CreateController { Name = 'MovementController' }
+local function ConstrainMovement(world)
+    for id in world:query(Player):without(MovementConstraint) do
+        world:insert(id, MovementConstraint {})
 
-
-function MovementController:KnitStart()
-    DisableFowardBackward()
+        DisableFowardBackward()
+    end
 end
 
 
-function MovementController:KnitInit()
-end
-
-
-return MovementController
+return ConstrainMovement
